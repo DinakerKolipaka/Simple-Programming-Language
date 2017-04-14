@@ -1,0 +1,14 @@
+April 2nd 2017 - Project (help)Resources shared by Ramya.
+April 4th 2017 - Team data submitted by Vidhi Patel.
+April 6th 2017 - MileStone 1: Link created and submitted by Manju Bisht.
+April 12th 2017 - Milestone 2: Directory Structure created by Vidhi Patel.
+April 12th 2017 - Milestone 2: Document/Name suggested by Dinaker(DRVM) and Vidhi(SPL), Vidhi's suggestion was adopted.
+April 12th 2017 - Milestone 2: Document/Grammar by Vidhi Patel, Ramya, Dinakar.
+April 12th 2017 - Milestone 2: Document/Grammar review and correction by Ramya, Manju Bisht and Dinaker.
+April 12th 2017 - Milestone 2: Document/Grammar Description (please write your name whoever did it).
+April 12th 2017 - Milestone 2: Document/Design of SPL by Dinaker and Manju Bisht.
+April 12th 2017 - Milestone 2: Document/Design of SPL review by Ramya and Vidhi Patel. (Not done yet)
+April 12th 2017 - Milestone 2: Document/Lexical Specification by Vidhi Patel.
+April 12th 2017 - Milestone 2: Document/Lexical Specification review and correction by Manju Bisht.
+April 12th 2017 - Milestone 2: Document/Semantics
+<Add more>
