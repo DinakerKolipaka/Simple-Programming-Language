@@ -6,12 +6,14 @@ April 12th 2017 - Milestone 2: Document/Name suggested by Dinaker(MVRD) and Vidh
 April 12th 2017 - Milestone 2: Document/Grammar by Vidhi Patel, Ramya, Dinaker.
 April 12th 2017 - Milestone 2: Document/Grammar review and correction by Ramya, Manju Bisht and Dinaker.
 April 12th 2017 - Milestone 2: Document/Grammar Description Ramya and Dinakar.
-April 12th 2017 - Milestone 2: Document/Design of SPL by Dinaker and Manju Bisht.
+April 12th 2017 - Milestone 2: Document/Language Processing System by Manju Bisht.
+April 12th 2017 - Milestone 2: Document/Language Processing System review by Ramya and Dinaker
+April 12th 2017 - Milestone 2: Document/Design of SPL by Manju Bisht, Vidhi, Dinaker.
 April 12th 2017 - Milestone 2: Document/Design of SPL review by Ramya and Vidhi Patel.
-April 12th 2017 - Milestone 2: Document/Lexical Specification by Vidhi Patel.
+April 12th 2017 - Milestone 2: Document/Lexical Specification by Manju Bisht.
 April 12th 2017 - Milestone 2: Document/Lexical Specification review and correction by Manju Bisht.
 April 12th 2017 - Milestone 2: Document/Parser specification by Manju Bisht
-April 12th 2017 - Milestone 2: Document/Semantics Descripton by Ramya, Manju Bisht, Dinaker
+April 12th 2017 - Milestone 2: Document/Semantics Descripton by Vidhi, Ramya, Dinaker
 April 12th 2017 - Milestone 2: Document/Final Edit by Manju Bisht
 April 12th 2017 - Milestone 2: Document/Final Review by Ramya, Dinaker and Vidhi Patel.
 <Add more>
