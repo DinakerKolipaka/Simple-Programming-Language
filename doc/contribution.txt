@@ -1,3 +1,5 @@
+Contribution by each Team member.
+
 April 2nd 2017 - Project (help)Resources shared by Ramya.
 April 4th 2017 - Team data submitted by Vidhi Patel.
 April 6th 2017 - MileStone 1: Link created and submitted by Manju Bisht.
@@ -16,4 +18,36 @@ April 12th 2017 - Milestone 2: Document/Parser specification by Manju Bisht
 April 12th 2017 - Milestone 2: Document/Semantics Descripton by Vidhi, Ramya, Dinaker
 April 12th 2017 - Milestone 2: Document/Final Edit by Manju Bisht
 April 12th 2017 - Milestone 2: Document/Final Review by Ramya, Dinaker and Vidhi Patel.
-<Add more>
+
+
+
+
+Future plan
+
+1. Lexical Analyzer will be developed by - Manju and Dinaker.
+    1.a Specification(grammar), read and write predicate - Manju.
+    1.b Token match predicates for all terminals - Dinaker.
+    1.c Specification(grammar), read and write predicate review - Vidhi.
+    1.d Token match predicates for all terminals review - Ramya.
+    
+2. Parser will be developed by - Vidhi and Ramya.
+    2.a Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement - Vidhi.
+    2.b Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block - Ramya.
+    2.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement review - Dinaker.
+    2.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block review - Manju.
+    
+3. Discuss and finalize intermediate language structure - Manju, Dinaker, Vidhi, and Ramya.
+
+4. Intermediate code generator - Manju and Dinaker
+    4.a Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement - Manju.
+    4.b Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block - Dinaker.
+    4.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement review - Ramya.
+    4.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block review - Vidhi.
+    
+4. Interpreter will be developed by - Vidhi and Ramya, review by Manju and Dinaker.
+
+5. Creating Prolog application(exe) - Manju and Dinaker.
+
+6. Command line execution - Vidhi and Ramya.
+
+7. Final documents and video - Manju, Dinaker, Vidhi, and Ramya.
