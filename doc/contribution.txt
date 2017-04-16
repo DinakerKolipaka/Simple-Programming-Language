@@ -45,7 +45,7 @@ Future plan
     4.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement review - Ramya.
     4.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block review - Vidhi.
     
-4. Interpreter will be developed by - Vidhi and Ramya, review by Manju and Dinaker.
+4. Interpreter will be developed by - Vidhi, Ramya, Manju and Dinaker.
 
 5. Creating Prolog application(exe) - Manju and Dinaker.
 
