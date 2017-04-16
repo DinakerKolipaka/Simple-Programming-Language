@@ -13,9 +13,10 @@ April 12th 2017 - Milestone 2: Document/Language Processing System review by Ram
 April 12th 2017 - Milestone 2: Document/Design of SPL by Manju Bisht, Vidhi, Dinaker.
 April 12th 2017 - Milestone 2: Document/Design of SPL review by Ramya and Vidhi Patel.
 April 12th 2017 - Milestone 2: Document/Lexical Specification by Manju Bisht.
-April 12th 2017 - Milestone 2: Document/Lexical Specification review and correction by Manju Bisht.
-April 12th 2017 - Milestone 2: Document/Parser specification by Manju Bisht
-April 12th 2017 - Milestone 2: Document/Semantics Descripton by Vidhi, Ramya, Dinaker
+April 12th 2017 - Milestone 2: Document/Lexical Specification review and correction by Ramya and Dinaker.
+April 12th 2017 - Milestone 2: Document/Parser specification by Manju Bisht.
+April 12th 2017 - Milestone 2: Document/Parser review and correction by Ramya and Dinaker.
+April 12th 2017 - Milestone 2: Document/Semantics Descripton by Vidhi, Ramya, Dinaker.
 April 12th 2017 - Milestone 2: Document/Final Edit by Manju Bisht
 April 12th 2017 - Milestone 2: Document/Final Review by Ramya, Dinaker and Vidhi Patel.
 
@@ -24,16 +25,16 @@ April 12th 2017 - Milestone 2: Document/Final Review by Ramya, Dinaker and Vidhi
 
 Future plan
 
-1. Lexical Analyzer will be developed by - Manju and Dinaker.
+1. Lexical Analyzer will be developed by - Manju and Ramya.
     1.a Specification(grammar), read and write predicate - Manju.
-    1.b Token match predicates for all terminals - Dinaker.
+    1.b Token match predicates for all terminals - Ramya.
     1.c Specification(grammar), read and write predicate review - Vidhi.
-    1.d Token match predicates for all terminals review - Ramya.
+    1.d Token match predicates for all terminals review - Dinaker.
     
-2. Parser will be developed by - Vidhi and Ramya.
+2. Parser will be developed by - Vidhi and Dinaker.
     2.a Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement - Vidhi.
-    2.b Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block - Ramya.
-    2.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement review - Dinaker.
+    2.b Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block - Dinaker.
+    2.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement review - Ramya.
     2.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block review - Manju.
     
 3. Discuss and finalize intermediate language structure - Manju, Dinaker, Vidhi, and Ramya.
