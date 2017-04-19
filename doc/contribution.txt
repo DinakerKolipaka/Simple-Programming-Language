@@ -13,9 +13,10 @@ April 12th 2017 - Milestone 2: Document/Language Processing System review by Ram
 April 12th 2017 - Milestone 2: Document/Language Design of SPL by Manju Bisht, Vidhi, Dinaker.
 April 12th 2017 - Milestone 2: Document/Language Design of SPL review by Ramya and Vidhi Patel.
 April 12th 2017 - Milestone 2: Document/Lexical Specification by Manju Bisht.
-April 12th 2017 - Milestone 2: Document/Lexical Specification review and correction by Manju Bisht.
-April 12th 2017 - Milestone 2: Document/Parser specification by Manju Bisht
-April 12th 2017 - Milestone 2: Document/Semantics Descripton by Vidhi, Ramya, Dinaker
+April 12th 2017 - Milestone 2: Document/Lexical Specification review and correction by Ramya and Dinaker.
+April 12th 2017 - Milestone 2: Document/Parser specification by Manju Bisht.
+April 12th 2017 - Milestone 2: Document/Parser review and correction by Ramya and Dinaker.
+April 12th 2017 - Milestone 2: Document/Semantics Descripton by Vidhi, Ramya, Dinaker.
 April 12th 2017 - Milestone 2: Document/Final Edit by Manju Bisht
 April 12th 2017 - Milestone 2: Document/Final Review by Ramya, Dinaker and Vidhi Patel.
 April 19th 2017 - Milestone 2: Document/Final Edit for resubmission by Ramya.
