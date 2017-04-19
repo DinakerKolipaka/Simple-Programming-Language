@@ -10,44 +10,50 @@ April 12th 2017 - Milestone 2: Document/Grammar review and correction by Ramya, 
 April 12th 2017 - Milestone 2: Document/Grammar Description Ramya and Dinakar.
 April 12th 2017 - Milestone 2: Document/Language Processing System by Manju Bisht.
 April 12th 2017 - Milestone 2: Document/Language Processing System review by Ramya and Dinaker
-April 12th 2017 - Milestone 2: Document/Design of SPL by Manju Bisht, Vidhi, Dinaker.
-April 12th 2017 - Milestone 2: Document/Design of SPL review by Ramya and Vidhi Patel.
+April 12th 2017 - Milestone 2: Document/Language Design of SPL by Manju Bisht, Vidhi, Dinaker.
+April 12th 2017 - Milestone 2: Document/Language Design of SPL review by Ramya and Vidhi Patel.
 April 12th 2017 - Milestone 2: Document/Lexical Specification by Manju Bisht.
 April 12th 2017 - Milestone 2: Document/Lexical Specification review and correction by Manju Bisht.
 April 12th 2017 - Milestone 2: Document/Parser specification by Manju Bisht
 April 12th 2017 - Milestone 2: Document/Semantics Descripton by Vidhi, Ramya, Dinaker
 April 12th 2017 - Milestone 2: Document/Final Edit by Manju Bisht
 April 12th 2017 - Milestone 2: Document/Final Review by Ramya, Dinaker and Vidhi Patel.
+April 19th 2017 - Milestone 2: Document/Final Edit for resubmission by Ramya.
+April 19th 2017 - Milestone 2: Document/Final Edit review for resubmission by Manju, Dinaker, Vidhi.
 
 
 
 
 Future plan
 
-1. Lexical Analyzer will be developed by - Manju and Dinaker.
+1. Lexical Analyzer will be developed by - Manju and Ramya.
     1.a Specification(grammar), read and write predicate - Manju.
-    1.b Token match predicates for all terminals - Dinaker.
+    1.b Token match predicates for all terminals - Ramya.
     1.c Specification(grammar), read and write predicate review - Vidhi.
-    1.d Token match predicates for all terminals review - Ramya.
+    1.d Token match predicates for all terminals review - Dinaker.
     
-2. Parser will be developed by - Vidhi and Ramya.
-    2.a Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement - Vidhi.
-    2.b Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block - Ramya.
-    2.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement review - Dinaker.
-    2.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block review - Manju.
+2. Parser will be developed by - Vidhi and Dinaker.
+    2.a Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Vidhi.
+    2.b Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter, Boolean- Dinaker.
+    2.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement review - Ramya.
+    2.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter, Boolean- Manju.
     
 3. Discuss and finalize intermediate language structure - Manju, Dinaker, Vidhi, and Ramya.
 
-4. Intermediate code generator - Manju and Dinaker
-    4.a Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement - Manju.
-    4.b Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block - Dinaker.
-    4.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-           statement, while-statement, Print-Statement review - Ramya.
-    4.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter,             Boolean, Special-Characters, Comment-Block review - Vidhi.
+4. Intermediate code generator - Vidhi and Dinaker
+    4.a Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Vidhi.
+    4.b Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter, Boolean - Dinaker.
+    4.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement review - Ramya.
+    4.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter, Boolean - Manju.
     
-4. Interpreter will be developed by - Vidhi and Ramya, review by Manju and Dinaker.
+5. Interpreter will be developed by - Manju and Ramya, review by Manju and Dinaker.
+    5.a Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Ramya.
+    5.b Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter, Boolean - Manju.
+    5.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement review - Dinaker.
+    5.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter, Boolean - Vidhi.
 
-5. Creating Prolog application(exe) - Manju and Dinaker.
+6. Creating Prolog application(exe) - Manju and Dinaker.
 
-6. Command line execution - Vidhi and Ramya.
+7. Command line execution - Vidhi and Ramya.
 
-7. Final documents and video - Manju, Dinaker, Vidhi, and Ramya.
+8. Final documents and video - Manju, Dinaker, Vidhi, and Ramya.
