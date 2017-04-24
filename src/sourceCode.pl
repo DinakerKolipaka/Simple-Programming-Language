@@ -2,6 +2,62 @@ ii/*********************************************************************/
 Lexer Code
 /*********************************************************************/
 
+%read from statements from file
+eos([], []).
+
+statement_list([])          	--> 	call(eos), !.
+statement_list([Line|Lines])	-->  	statement(Line), statement_list(Lines).
+
+statement([])     		--> 	( ";" ; call(eos) ; "\n" ; call(eos)  ), !.
+statement([L|Ls]) 		--> 	[L], statement(Ls).
+
+%convert into tokens
+convert_list([], []).
+convert_list([L|Ls], Fs) 	:- 	length(L, Len),
+    					Len =:= 0,
+					convert_list(Ls, Fs).
+
+convert_list([L|Ls], Fs) :- 		check_comment(L),
+					convert_list(Ls, Fs).
+
+convert_list([L|Ls], [F|Fs]) 	:- 	length(L, Len),
+    					Len =\= 0,
+    					convert_line(L, [], F ),
+					convert_list(Ls, Fs).
+
+convert_line([], X, CL1)	:-	reverse(X, Y),
+    					atom_codes(F, Y),
+    					CL1 = [F].
+    					
+
+convert_line([H|T], X, CL)	:- 	H =\= 32, 
+					token_codes(L), not_special(H, L),
+					convert_line(T, [H|X], CL).
+
+convert_line([H|T], X, [CL1|CL]) :-	H =:= 32, 
+    					reverse(X, Y), 
+    					atom_codes(F, Y),
+    					CL1 = F, 
+    					convert_line(T, [], CL).
+
+not_special(_, [])		:-	false.
+
+not_special(X, [H|T]) 		:-	X =\= H,
+					not_special(X, T).
+
+not_special(X, [H|_]) 		:-	X =:= H,
+					true.
+
+check_comment([H|_]) 		:- 	H =:= 35, true.
+
+token_codes([65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 
+	     76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86,
+	     87, 88, 89, 90, 97, 98, 99, 100, 101, 102,
+	     103, 104, 105, 106, 107, 108, 109, 110, 111,
+	     112, 113, 114, 115, 116, 117, 118, 119, 120,
+	     121, 122, 123, 124, 125, 48, 49, 50, 51, 52,
+	     53, 54, 55, 56, 57, 33, 37, 40, 41, 42, 43,
+	     45, 47, 60, 61, 62]).
 
 
 
