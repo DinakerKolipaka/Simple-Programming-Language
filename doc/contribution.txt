@@ -23,7 +23,7 @@ April 19th 2017 - Milestone 2: Document/Final Edit for resubmission by Ramya.
 April 19th 2017 - Milestone 2: Document/Final Edit review for resubmission by Manju, Dinaker, Vidhi.
 April 19th 2017 - Milestone 2: Prolog/Parser specification for grammar rules by Vidhi, Dinaker
 April 20th 2017 - Milestone 2: Prolog/Parser specification for grammar rules by Vidhi, Dinaker.
-
+April 23rd 2017 - Milestone 2: Prolog/Parser changes for operator precedence by Vidhi, Dinaker.
 
 
 
