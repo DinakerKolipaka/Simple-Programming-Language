@@ -20,14 +20,6 @@ statement(P)-->print_statement(P).
 statement(I)-->if_statement(I).
 statement(W)-->while_statement(W).
 
-print_statement('print'(E))-->['print'],expression(E).
-print_statement('print'(C))-->['print'],comparision(C).
-print_statement('print'('nl'))-->['print'],['nl'].
-print_statement('print'(ID))-->['print'],identifier(ID).
-print_statement('print'(S))-->['print'],isString(S).
-isString(S)-->[S],{string(S)}.
-%statement_list((list([a,b]),list([c,d])), Ls).
-
 statement_list([S|L])-->statement(S),statement_list(L).
 statement_list([])-->[].
 %statement_list([S])-->statement([S]).
@@ -35,6 +27,14 @@ seq([]) --> [].
 seq([E|Es]) --> statement(E), seq(Es).
 seqq([]) --> [].
 seqq([Es|Ess]) --> seq(Es), seqq(Ess).
+
+print_statement('print'(E))-->['print'],expression(E).
+print_statement('print'(C))-->['print'],comparision(C).
+print_statement('print'('nl'))-->['print'],['nl'].
+print_statement('print'(ID))-->['print'],identifier(ID).
+print_statement('print'(S))-->['print'],isString(S).
+isString(S)-->[S],{string(S)}.
+%statement_list((list([a,b]),list([c,d])), Ls).
 
 declaration('int'(ID))--> ['int'], identifier(ID).
 declaration('bool'(ID))--> ['bool'], identifier(ID).
