@@ -1,6 +1,6 @@
 program(program(P))-->statement_list(P).
 
-statement_list('statement_List'(S,L))-->statement(S),[';'],statement_list(L).
+statement_list('statement_List'([S,L]))-->statement(S),[';'],statement_list(L).
 statement_list('statement_List'(S))-->statement(S),[';'].
 
 statement(statement(S))-->assignment(S).
