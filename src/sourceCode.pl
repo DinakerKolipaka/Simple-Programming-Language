@@ -1,4 +1,4 @@
-ii/*********************************************************************/
+/*********************************************************************/
 Lexer Code
 /*********************************************************************/
 
@@ -153,7 +153,8 @@ Interpreter Code
 /* Currently all operations, assignment, if-then-else statements are working */
 
 /* high-level predicate to call the interpreter program. */
-eval_Program(T) :-      add_to_env([[x,10], [b, 'false']], [y,20], Env),
+
+eval_Program(T) :-      add_to_env([[x, 0]], [y,20], Env),
                         eval_exp_Program(T, Env, _).
 
 
@@ -164,16 +165,24 @@ add_to_env(E, L, Env) :-        length(E, N),
                                 Env = [L].
 
 
-add_to_env(E, L, Env) :-        length(E, N),
-                                N > 0,
-                                append(E, [L], Env).
+add_to_env(E, [Id, Value], Env_New) :-  length(E, N),
+                                		N > 0,
+    									look_up(Id, Value, E),
+    									delete(E, [Id, _], Env),
+	    								append(Env, [[Id,Value]], Env_New), !.
+
+
+add_to_env(E, [Id, Value], Env) :-  length(E, N),
+                                	N > 0,
+    								\+look_up(Id, Value, E),
+                                	append(E, [Id, Value], Env), !.
 
 
 /* evaluation function for operators */
 eval_exp_Iden('+'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
                                                 !,
                                                 eval_exp_Iden(E, R2, Env_N, Env_New),
-                                                R is R1 + R2, !.
+                                                R is R1 + R2.
 
 eval_exp_Iden('-'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
                                                 !,
@@ -187,9 +196,17 @@ eval_exp_Iden('*'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N
 
 
 eval_exp_Iden('/'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
+                                                eval_exp_Iden(E, R2, Env_N, Env_New),
+    											check_divion_by_zero(R2),	
+                                                R is R1 / R2, !.
+
+eval_exp_Iden('/'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R, Env, Env_N),
                                                 !,
                                                 eval_exp_Iden(E, R2, Env_N, Env_New),
-                                                R is R1 / R2, !.
+    											\+ check_divion_by_zero(R2),	
+												write("Error, division by zero"), !.
+
+
 
 /* eval func for mod */
 eval_exp_Iden(em(T, E), R, Env, Env_New)  :-    eval_term_Iden(T, R1, Env, Env_N),
@@ -197,10 +214,12 @@ eval_exp_Iden(em(T, E), R, Env, Env_New)  :-    eval_term_Iden(T, R1, Env, Env_N
                                                 eval_exp_Iden(E, R2, Env_N, Env_New),
                                                 R is mod(R1,R2), !.
 
-eval_exp_Iden('='(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R, Env, Env_N),
+eval_exp_Iden('='(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R, 0, Env),
                                                 !,
-                                                eval_exp_Iden(E, R2, Env_N, Env_NN),
+                                                eval_exp_Iden(E, R2, Env, Env_NN),
                                                 add_to_env(Env_NN, [R, R2], Env_New),
+    											write(Env_New),
+    											nl,
                                                 !.
 
 /* eval func for terminal */
@@ -209,15 +228,17 @@ eval_exp_Iden(et(T), R, Env, Env_New) :-        eval_term_Iden(T, R, Env, Env_Ne
 
 
 
-eval_term_Iden(t(T), T, _) :-                   term_Iden(T).
+eval_term_Iden(t(T), T, Env, Env) :-            integer(T).
 
-/* when terminal is identifier */
-eval_term_Iden(t(T), R, Env, Env) :-            \+ term_Iden(T),
+/* when terminl is identifier */
+eval_term_Iden(t(T), T, 0, _) :-            	\+ integer(T).
+eval_term_Iden(t(T), R, Env, Env) :-            \+ integer(T),
                                                 look_up(T, Value, Env),
                                                 R = Value.
 
-term_Iden(T) :-                                 atom_codes(T, F),
-                                                F > 47, F < 58.
+
+check_divion_by_zero(Divisor) :- Divisor =\= 0.     					
+
 
 /* eval for only if-then condition*/
 eval_exp_If('if'(If, Then), Env, Env_New) :-    eval_exp_Iden(If, Bool, Env, Env_N),
@@ -236,10 +257,8 @@ eval_exp_If_Else('if'(If, _, Else), Env, Env_New) :-    eval_exp_Iden(If, Bool, 
                                                         \+ is_true(Bool),
                                                         eval_exp_Statement(Else, Env_N, Env_New).
 
-eval_exp_Statement('statement'(T), Env, Env_New) :-     eval_exp_Iden(T, R, Env, Env_New),
-                                                        !,
-                                                        write(R),
-                                                        nl, !.
+eval_exp_Statement('statement'(T), Env, Env_New) :-     eval_exp_Iden(T, _, Env, Env_New),
+                                                        nl.
 
 eval_exp_Statement('statement'(T), Env, Env_New) :-     eval_exp_If(T, Env, Env_New).
 eval_exp_Statement('statement'(T), Env, Env_New) :-     eval_exp_If_Then(T, Env, Env_New).
@@ -273,4 +292,7 @@ look_Id(Id, Value, [Id, Value]).
 look_Id(_, _, _).
 
 is_true(Bool) :- Bool = 'true'.
+	
+
+ 
 
