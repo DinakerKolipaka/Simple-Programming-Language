@@ -154,7 +154,7 @@ Interpreter Code
 
 /* high-level predicate to call the interpreter program. */
 
-eval_Program(T) :-      add_to_env([[x, 0]], [y,20], Env),
+eval_Program(‘program’(T)) :-      add_to_env([[x, 0]], [y,20], Env),
                         eval_exp_Program(T, Env, _).
 
 
@@ -179,28 +179,28 @@ add_to_env(E, [Id, Value], Env) :-  length(E, N),
 
 
 /* evaluation function for operators */
-eval_exp_Iden('+'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
+eval_exp_Iden('add'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
                                                 !,
                                                 eval_exp_Iden(E, R2, Env_N, Env_New),
                                                 R is R1 + R2.
 
-eval_exp_Iden('-'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
+eval_exp_Iden('subtract'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
                                                 !,
                                                 eval_exp_Iden(E, R2, Env_N, Env_New),
                                                 R is R1 - R2, !.
 
-eval_exp_Iden('*'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
+eval_exp_Iden('multiply'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
                                                 !,
                                                 eval_exp_Iden(E, R2, Env_N, Env_New),
                                                 R is R1 * R2, !.
 
 
-eval_exp_Iden('/'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
+eval_exp_Iden('divide'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R1, Env, Env_N),
                                                 eval_exp_Iden(E, R2, Env_N, Env_New),
     											check_divion_by_zero(R2),	
                                                 R is R1 / R2, !.
 
-eval_exp_Iden('/'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R, Env, Env_N),
+eval_exp_Iden('divide'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R, Env, Env_N),
                                                 !,
                                                 eval_exp_Iden(E, R2, Env_N, Env_New),
     											\+ check_divion_by_zero(R2),	
@@ -209,12 +209,19 @@ eval_exp_Iden('/'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R, Env, Env_N)
 
 
 /* eval func for mod */
-eval_exp_Iden(em(T, E), R, Env, Env_New)  :-    eval_term_Iden(T, R1, Env, Env_N),
+eval_exp_Iden(‘modulo’(T, E), R, Env, Env_New)  :-    eval_term_Iden(T, R1, Env, Env_N),
                                                 !,
                                                 eval_exp_Iden(E, R2, Env_N, Env_New),
                                                 R is mod(R1,R2), !.
+/*assign operator*/
+eval_exp_Iden('assign'(T, E), R, Env, Env_New) :- 	eval_term_Iden(T, R, Env, Env_N),
+	    										!,
+    											eval_exp_Iden(E, R2, Env_N, Env_NN),
+    											add_to_env(Env_NN, [R, R2], Env_New), !.
 
-eval_exp_Iden('='(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R, 0, Env),
+/*comparison operators*/
+/*Work*/
+eval_exp_Iden('compareequals'(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R, 0, Env),
                                                 !,
                                                 eval_exp_Iden(E, R2, Env, Env_NN),
                                                 add_to_env(Env_NN, [R, R2], Env_New),
@@ -222,17 +229,40 @@ eval_exp_Iden('='(T, E), R, Env, Env_New) :-    eval_term_Iden(T, R, 0, Env),
     											nl,
                                                 !.
 
+%Comparison operators:  ‘<’, ‘>’, ‘<=’, ‘>=’, ‘!=’
+eval_exp_Iden('comparelesser'(E, E1), R, Env, Env_New) :- eval_exp_Iden(E, R1, Env, Env_N),!,
+eval_exp_Iden(E1, R2, Env_N, Env_New), eval(R1<R2, R), !.
+eval_exp_Iden('comparegreater'(E, E1), R, Env, Env_New) :- eval_exp_Iden(E, R1, Env, Env_N),!,
+eval_exp_Iden(E1, R2, Env_N, Env_New), eval(R1>R2, R), !.
+eval_exp_Iden('comparelesserequal'(E, E1), R, Env, Env_New) :- eval_exp_Iden(E, R1, Env, Env_N),!,
+eval_exp_Iden(E1, R2, Env_N, Env_New), eval(R1=<R2, R), !.
+eval_exp_Iden('comparegreaterequal'(E, E1), R, Env, Env_New) :- eval_exp_Iden(E, R1, Env, Env_N),!,
+eval_exp_Iden(E1, R2, Env_N, Env_New), eval(R1>=R2, R), !.
+eval_exp_Iden('comparenotequal'(E, E1), R, Env, Env_New) :- eval_exp_Iden(E, R1, Env, Env_N),!,
+eval_exp_Iden(E1, R2, Env_N, Env_New), eval(R1\=R2, R), !.
+
+check(Exp):- Exp.
+eval(Exp, R):- check(Exp), R is 1.
+eval(Exp, R):- \+ check(Exp), R is 0.
+
+
+%while
+eval_exp_Statement('statement'(T), Env, Env_New) :- eval_exp_While(T, Env, Env_New).
+eval_exp_While(‘while’(While,Then), Env, Env_New) :- eval_exp_Iden(While, R, Env, Env_N), R >= 1, eval_exp_Statement (Then, Env_N, Env_New), eval_exp_While(‘while’(While,Then), Env_New, Env_NewRepeat).
+eval_exp_While(‘while’(While,Then), Env, Env_New) :- eval_exp_Iden(While, R, Env, Env_N), R=<0.
+
+
 /* eval func for terminal */
-eval_exp_Iden(et(T), R, Env, Env_New) :-        eval_term_Iden(T, R, Env, Env_New).
+eval_exp_Iden(‘et’(T), R, Env, Env_New) :-        eval_term_Iden(T, R, Env, Env_New).
 
 
 
 
-eval_term_Iden(t(T), T, Env, Env) :-            integer(T).
+eval_term_Iden(‘number’(T), T, Env, Env) :-            integer(T).
 
-/* when terminl is identifier */
-eval_term_Iden(t(T), T, 0, _) :-            	\+ integer(T).
-eval_term_Iden(t(T), R, Env, Env) :-            \+ integer(T),
+/* when term is identifier */
+eval_term_Iden(‘id’(T), T, 0, _) :-            	\+ integer(T).
+eval_term_Iden(‘id’(T), R, Env, Env) :-            \+ integer(T),
                                                 look_up(T, Value, Env),
                                                 R = Value.
 
@@ -292,7 +322,6 @@ look_Id(Id, Value, [Id, Value]).
 look_Id(_, _, _).
 
 is_true(Bool) :- Bool = 'true'.
-	
 
  
 
