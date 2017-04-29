@@ -15,8 +15,8 @@ righthand(R)-->comparision(R).
 righthand(R)-->expression(R).
 righthand(R)-->boolean(R).
 
-declaration(declare('int'((ID,T))))--> ['int'], identifier(ID),['='],term(T),!.
-declaration(declare('bool'(ID,T)))--> ['bool'], identifier(ID),['='],term(T),!.
+declaration(declare(('int'(ID)),T))--> ['int'], identifier(ID),['='],term(T),!.
+declaration(declare(('bool'(ID)),T))--> ['bool'], identifier(ID),['='],term(T),!.
 declaration(declare('int'(ID)))--> ['int'], identifier(ID).
 declaration(declare('bool'(ID)))--> ['bool'], identifier(ID).
 
