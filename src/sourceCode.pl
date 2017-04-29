@@ -210,17 +210,19 @@ reduce_Statement(statement(T), Env, Env_New) :-     reduce_print(T, Env, Env_New
 
 
 /*assign operator*/
-reduce_assignment(assign(T, E), R, Env, Env_New) :- 	reduce_declaration(T,R,Env,Env_N),
+reduce_declaration(declare(T, E), R, Env, Env_New) :- 	reduce_declaration(T,R,Env,Env_N), 
 	    										!,
-    											reduce_expression(E, R2, Env_N, Env_NN),
+    											reduce_expression(E, R2, Env_N, Env_NN), 
     											add_to_env(Env_NN, [R, R2], Env_New), !.
                                                 
-reduce_assignment(assign(T, E), R, Env, Env_New) :-  eval_term(T, R, 0, Env),
+reduce_assignment(assign(T, E), R, Env, Env_New) :-  eval_term(T, R, Env, Env), 
 						    \+ integer(R),
 						    reduce_expression(E, R2, Env, Env_NN),
 					    	    add_to_env(Env_NN, [R, R2], Env_New), !.
 /*Error handling-assign operator*/
 reduce_assignment(assign(T, _), _, _, _) :- 	integer(T), write('Error: Value cannot assigned to an integer'), !.
+
+
 
 /*Declare operator*/                                               
 reduce_declaration(declare(T), R, Env, Env_New) :- reduce_datatype(T, T1,D, Env), eval_term(T1, R, 0, _),\+ integer(R), add_to_env(Env, [R,D], Env_New), !.
@@ -230,7 +232,7 @@ reduce_declaration(declare(T), _, _,_) :- reduce_datatype(T, T1, _, _), integer(
 reduce_datatype(int(T),T, D,_):- D = 0.
 reduce_datatype(bool(T),T,D,_):- D= false.
 
-//default value is necessary to check if a var has been declared previous to assignment. When assigning, always check env if it is already present.
+//default value is necessary to check if a var has been declared previous to assignment. When assigning, always check env if it is already present--DONE--TEST
 
 //throw error when declaration is done twice for the same variable.
 //check for type mismatch during assignment
@@ -373,6 +375,8 @@ eval_term(id(T), T, 0, _) :-		\+ integer(T).
 eval_term(id(T), R, Env, Env) :-	\+ integer(T),
                                      		look_up(T, Value, Env),
                                      		R = Value.
+
+eval_term()
 
 check_divion_by_zero(Divisor) :- Divisor =\= 0.     					
 
