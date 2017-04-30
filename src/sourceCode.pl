@@ -228,7 +228,7 @@ add_to_env(E, [Id, Value], Env_New) :-  length(E, N),
     					delete(E, [Id, _], Env),
 	    				append(Env, [[Id,Value]], Env_New), !.
 
-/* update ENV, when an identifier's value is updated,  E1 = E0{I, V1} & {I, V2} */
+/* update ENV, when an identifiers value is updated,  E1 = E0{I, V1} & {I, V2} */
 add_to_env(E, [Id, Value], Env) :-  length(E, N),
                                     N > 0,
     				    \+look_up(Id, Value, E),
@@ -449,6 +449,8 @@ check_divison_by_zero(Divisor) :- Divisor =\= 0.
 
 
 /* look-up for variables in env */
+
+look_up(_, _, []):- write('Error: Identifier not previously declared').
 
 look_up(Id, Value, [H|_]) :-    look_Id(Id, Value, H).
                                
