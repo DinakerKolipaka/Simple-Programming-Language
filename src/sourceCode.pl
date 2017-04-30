@@ -369,7 +369,7 @@ eval_compareGreater('compareGreater'(E, E1), R, Env, Env_New) :- 	reduce_express
 									reduce_expression(E1, R2, Env_N, Env_New), 
 									eval(R1>R2, R), !.
 
-eval_compareLesserequal('compareLesserEqual'(E, E1), R, Env, Env_New) :- 	reduce_expression(E, R1, Env, Env_N),!,
+eval_compareLesserEqual('compareLesserEqual'(E, E1), R, Env, Env_New) :- 	reduce_expression(E, R1, Env, Env_N),!,
 										reduce_expression(E1, R2, Env_N, Env_New), 
 										eval(R1=<R2, R), !.
 
@@ -411,16 +411,17 @@ eval_expression(multiply(T, E), R, Env, Env_New) :- 	eval_terminal(T, R1, Env, E
                                                 	R is R1 * R2, !.
 
 
-eval_expression(divide(T, E), R, Env, Env_New) :-   	eval_terminal(T, R1, Env, Env_N),
-                                                	reduce_expression(E, R2, Env_N, Env_New),
-    							check_divion_by_zero(R2),	
-                                                	R is R1 / R2, !.
-
 eval_expression(divide(T, E), R, Env, Env_New) :-   	eval_terminal(T, R, Env, Env_N),
                                                 	!,
                                                    	reduce_expression(E, R2, Env_N, Env_New),
-					    	    	\+ check_divion_by_zero(R2),	
+					    	    	\+ check_divison_by_zero(R2),	
 						    	write("Error: Division by zero"), !.
+
+eval_expression(divide(T, E), R, Env, Env_New) :-   	eval_terminal(T, R1, Env, Env_N),
+                                                	reduce_expression(E, R2, Env_N, Env_New),
+    							check_divison_by_zero(R2),	
+                                                	R is R1 / R2, !.
+
 
 /* eval func for mod */
 eval_expression(modulo(T, E), R, Env, Env_New)  :-    	eval_terminal(T, R1, Env, Env_N),
@@ -444,7 +445,7 @@ eval_term(id(T), R, Env, Env) :-     \+ integer(T),
 eval_term(T, T, Env, Env) :-  	is_true(T).
 eval_term(T, T, Env, Env) :- 	\+ is_true(T).
 
-check_divion_by_zero(Divisor) :- Divisor =\= 0.     					
+check_divison_by_zero(Divisor) :- Divisor =\= 0.     					
 
 
 /* look-up for variables in env */
