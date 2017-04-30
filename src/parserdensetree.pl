@@ -4,11 +4,11 @@ program(program(P))-->statement_list(P),!.
 statement_list('statement_List'(S,L))-->statement(S),[';'],statement_list(L),!.
 statement_list('statement_List'(S))-->statement(S),[';'],!.
 
-statement(statement(S))-->assignment(S),!.
-statement(statement(D))-->declaration(D),!.
-statement(statement(P))-->print_statement(P),!.
-statement(statement(I))-->if_statement(I),!.
-statement(statement(W))-->while_statement(W),!.
+statement(statement(S))-->assignment(S).
+statement(statement(D))-->declaration(D).
+statement(statement(P))-->print_statement(P).
+statement(statement(I))-->if_statement(I).
+statement(statement(W))-->while_statement(W).
 
 assignment(assign(L,R))-->identifier(L),['='],righthand(R),!.
 righthand(R)-->comparision(R).
@@ -40,19 +40,19 @@ expression(expression(T))-->term(T).
 
 
 term(term(T))-->boolean(T),!.
+
 term(term(T))-->identifier(T),!.
 term(term(T))-->terminal(T).
-
-toatom(Y,X):-term_string(X,Y).
 terminal(et(N))-->number(N).
 
 
 %identifier('id'(S))-->[S], !,{\+iskey(S)},!.
-identifier('id'(S))-->[S],{toatom(S,T),iskey(T)}.
+identifier('id'(S))-->[S],{iskey(S)}.
 
 
 iskey(K):-keywords(X),\+member(K,X).
-iskey(K):-keywords(X),member(K,X),write('Error: Identifier cannot be a keyword'),false,!.
+iskey(K):-keywords(X),member(K,X),false.
+%writeerror:-write('Error'),false.
 
 callabort:-halt.
 number(0)-->[0].
@@ -83,8 +83,9 @@ isString(S)-->[S],{string(S)}.
 
 
 if_statement('if'(S,R))-->['if'], parent_start(S,R).
+parent_start(C,R)--> ['('], condition(C),[')'], \+then_block(R),false,!.
 parent_start(C,R)--> ['('], condition(C),[')'], then_block(R).
-parent_end(R)-->then_block(R).
+%parent_end(R)-->then_block(R).
 then_block('then'(B,E))--> ['then'], block(B),else_block(E),!.
 then_block('then'(B))--> ['then'], block(B).
 else_block('else'(B))-->['else'], block(B).
@@ -93,7 +94,7 @@ brace_end(S)--> statement_list(S),['}'].
 
 
 while_statement('while'(B))--> ['while'], parent_while_start(B),!.
-parent_while_start(C,R)--> ['('], condition(C), parent_while_end(R).
+parent_while_start((C,R))--> ['('], condition(C), parent_while_end(R).
 parent_while_end(R)--> [')'], block(R).
 
 
