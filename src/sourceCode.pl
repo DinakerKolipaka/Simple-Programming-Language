@@ -5,12 +5,19 @@ Lexer Code
 :- use_module(library(pio)).
 :- use_module(library(dcg/basics)).
 
-execute_SPL(File) :- 	phrase_from_file(statement_list_L(Ls), File), 
+execute_SPL(File) :- 	execute_First(),
+			phrase_from_file(statement_list_L(Ls), File), 
 			convert_list(Ls, Fs), 
 			flatten(Fs, Token), 
 			program(T, Token, _), 
 			tokenWrite(Token),
 			eval_Program(T).
+
+execute_First()	:-	set_prolog_flag(answer_write_options,
+                   	[ quoted(true),
+                     	portray(true),
+                     	spacing(next_argument)
+                   	]).
 
 eos([], []).
 
