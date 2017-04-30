@@ -51,7 +51,7 @@ identifier('id'(S))-->[S],{iskey(S)}.
 
 
 iskey(K):-keywords(X),\+member(K,X).
-iskey(K):-keywords(X),member(K,X),false.
+iskey(K):-keywords(X),member(K,X),write('Error'),false.
 %writeerror:-write('Error'),false.
 
 
@@ -92,9 +92,9 @@ block(S)--> ['{'],brace_end(S).
 brace_end(S)--> statement_list(S),['}'].
 
 
-while_statement('while'(B))--> ['while'], parent_while_start(B),!.
-parent_while_start((C,R))--> ['('], condition(C), parent_while_end(R).
-parent_while_end(R)--> [')'], block(R).
+while_statement('while'(B,R))--> ['while'], ['('], condition(B), [')'], block(R),!.
+%parent_while_start((C,R))--> parent_while_end(R).
+%parent_while_end(R)--> .
 
 
 tokenWrite :- program(T,['int',a,';',a,=,1,+,2,;,print,a,;,if,'(',a,==,1,')',then,'{',a,=,1,;,'}',else,'{',b,=,2,;,'}',;],_),
