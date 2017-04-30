@@ -24,7 +24,9 @@ April 19th 2017 - Milestone 2: Document/Final Edit review for resubmission by Ma
 April 19th 2017 - Milestone 2: Prolog/Parser specification for grammar rules by Vidhi, Dinaker
 April 20th 2017 - Milestone 2: Prolog/Parser specification for grammar rules by Vidhi, Dinaker.
 April 23rd 2017 - Milestone 2: Prolog/Parser changes for operator precedence by Vidhi, Dinaker.
-
+April 30th 2017 - Milestone 3: Changed if-then-else loop in parser, made the presentation by Vidhi.
+April 29th 2017 - Milestone 3: Updated code for condensed parse tree, created bash file for execution by Vidhi
+April 25th 2017 - Milestone 3: Changed parenthesis for matching loops by Vidhi.
 
 
 Future plan
