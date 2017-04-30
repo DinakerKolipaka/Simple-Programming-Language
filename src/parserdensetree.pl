@@ -51,7 +51,7 @@ identifier('id'(S))-->[S],{iskey(S)}.
 
 
 iskey(K):-keywords(X),\+member(K,X).
-iskey(K):-keywords(X),member(K,X),write('Error'),false.
+iskey(K):-keywords(X),member(K,X),false.
 %writeerror:-write('Error'),false.
 
 
@@ -98,5 +98,5 @@ while_statement('while'(B,R))--> ['while'], ['('], condition(B), [')'], block(R)
 
 
 tokenWrite :- program(T,['int',a,';',a,=,1,+,2,;,print,a,;,if,'(',a,==,1,')',then,'{',a,=,1,;,'}',else,'{',b,=,2,;,'}',;],_),
-              open('C:/Users/Dinaker/Desktop/parseroutput.txt', write, Stream),
+              open('../data/intermediate.txt', write, Stream),
               write(Stream,T),nl(Stream),close(Stream).
