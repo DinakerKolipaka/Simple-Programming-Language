@@ -21,7 +21,7 @@ convert_list([L|Ls], Fs) 	:- 	length(L, Len),
     					Len =:= 0,
 					convert_list(Ls, Fs).
 
-/* Parser doesn't need comments. line is checked for comment. */
+/* Parser doesnt need comments. line is checked for comment. */
 convert_list([L|Ls], Fs) :- 		check_comment(L),
 					convert_list(Ls, Fs).
 
@@ -238,7 +238,7 @@ reduce_Statement(statement(T), Env, Env_New) :-     reduce_print(T, Env, Env_New
 
 /* assignment, update the ENV */
 reduce_assignment(assign(T, _), _, _, _) :-	integer(T),
-						write("Error: Value cannot be assigned to an integer").
+						write("Error: Integer value cannot be assigned to an Integer").
 
 reduce_assignment(assign(T, E), R, Env, Env_New) :- eval_term(T, R, 0, Env),
 						    \+ integer(R),
@@ -250,7 +250,7 @@ reduce_assignment(assign(T, E), R, Env, Env_New) :- eval_term(T, R, 0, Env),
 reduce_assignment(assign(T, _), R, Env, _) :- 	    eval_term(T, R, 0, Env),
 						    \+ integer(R),
 						    \+ look_up(R, _, Env),
-						    write("Error: Variable not declared yet").
+						    write("Error: Integer identifier not declared yet").
 							
 
 reduce_assignment(assign(T, E), R, Env, Env_NN) :-  eval_term(T, R, 0, Env),
@@ -258,7 +258,7 @@ reduce_assignment(assign(T, E), R, Env, Env_NN) :-  eval_term(T, R, 0, Env),
 						    look_up(R, Value, Env),
 						    reduce_expression(E, R2, Env, Env_NN),
 						    \+ type_match(Value, R2),
-					    	    write("Error: Type mismatch").
+					    	    write("Error: Data type mismatch").
 					    	    
 					    	    
 					    	    
@@ -336,7 +336,7 @@ eval_boolean(term(T), Value, Env, Env_New) :-  eval_term(T, Value, Env, Env_New)
     										
 												
 eval_boolean(term(T), _, Env, _) :- 	\+ eval_term(T, _, Env, _),
-					write("Error: Value do not exist").
+					write("Error: Boolean identifier not delcared yet").
 													
 
 /* Comparison operators:  '==', ‘<’, ‘>’, ‘<=’, ‘>=’, ‘!=’ */
@@ -345,7 +345,6 @@ eval_compareEquals(compareEquals(T, E), R, Env, Env_New) :- 	eval_terminal(T, R,
                                                 	      	!,
                                                 	      	reduce_expression(E, R2, Env, Env_NN),
                                                 	      	add_to_env(Env_NN, [R, R2], Env_New),
-    								write(Env_New),
     								nl, !.
                                                 		
 eval_compareLesser('compareLesser'(E, E1), R, Env, Env_New) :- 	reduce_expression(E, R1, Env, Env_N),!,
@@ -407,7 +406,7 @@ eval_expression(divide(T, E), R, Env, Env_New) :-   	eval_terminal(T, R, Env, En
                                                 	!,
                                                    	reduce_expression(E, R2, Env_N, Env_New),
 					    	    	\+ check_divion_by_zero(R2),	
-						    	write("Error, division by zero"), !.
+						    	write("Error: Division by zero"), !.
 
 /* eval func for mod */
 eval_expression(modulo(T, E), R, Env, Env_New)  :-    	eval_terminal(T, R1, Env, Env_N),
