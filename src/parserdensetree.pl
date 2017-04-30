@@ -54,7 +54,7 @@ iskey(K):-keywords(X),\+member(K,X).
 iskey(K):-keywords(X),member(K,X),false.
 %writeerror:-write('Error'),false.
 
-callabort:-halt.
+
 number(0)-->[0].
 number(1)-->[1].
 number(2)-->[2].
@@ -82,11 +82,10 @@ print_statement('print'(S))-->['print'],isString(S).
 isString(S)-->[S],{string(S)}.
 
 
-if_statement('if'(S,R))-->['if'], parent_start(S,R).
-parent_start(C,R)--> ['('], condition(C),[')'], \+then_block(R),false,!.
-parent_start(C,R)--> ['('], condition(C),[')'], then_block(R).
-%parent_end(R)-->then_block(R).
-then_block(('then'(B),E))--> ['then'], block(B),else_block(E),!.
+if_statement('if'(C,I,E))-->['if'], parent_start(C,I,E),!.
+if_statement('if'(C,I))-->['if'], parent_start(C,I).
+parent_start(C,I,E)--> ['('], condition(C),[')'], then_block(I),else_block(E),!.
+parent_start(C,I)--> ['('], condition(C),[')'], then_block(I),!.
 then_block('then'(B))--> ['then'], block(B).
 else_block('else'(B))-->['else'], block(B).
 block(S)--> ['{'],brace_end(S).
@@ -98,6 +97,6 @@ parent_while_start((C,R))--> ['('], condition(C), parent_while_end(R).
 parent_while_end(R)--> [')'], block(R).
 
 
-tokenWrite :- program(T,['int',a,';',a,=,1,+,2,;,print,a,;,if,'(',a,==,1,')',then,'{',a,=,1,;,'}',else,'{',b,=,2,;,'}',;],R),
+tokenWrite :- program(T,['int',a,';',a,=,1,+,2,;,print,a,;,if,'(',a,==,1,')',then,'{',a,=,1,;,'}',else,'{',b,=,2,;,'}',;],_),
               open('C:/Users/Dinaker/Desktop/parseroutput.txt', write, Stream),
               write(Stream,T),nl(Stream),close(Stream).
