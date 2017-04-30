@@ -1,0 +1,16 @@
+bool b = true;
+int num = 8;
+int num2;
+if ( b )
+then
+{
+print num / 10;
+}
+else
+{
+print num2;
+};
+while ( num < 10 )
+{
+num = num + 1;
+};

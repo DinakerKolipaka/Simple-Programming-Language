@@ -1,0 +1,6 @@
+bool b;
+b = true;
+int num;
+num = 10;
+print b;
+print num;

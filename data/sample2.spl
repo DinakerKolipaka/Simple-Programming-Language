@@ -1,0 +1,5 @@
+int num;
+while ( num < 10 )
+{
+print n;
+};

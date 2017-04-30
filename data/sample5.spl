@@ -1,0 +1,3 @@
+int num = 10;
+int divisor;
+num = num / divisor;
