@@ -450,8 +450,6 @@ check_divison_by_zero(Divisor) :- Divisor =\= 0.
 
 /* look-up for variables in env */
 
-look_up(_, _, []):- write('Error: Identifier not previously declared'), nl.
-
 look_up(Id, Value, [H|_]) :-    look_Id(Id, Value, H).
                                
 look_up(Id, Value, [H|T]) :-    \+ look_Id(Id, _, H),
