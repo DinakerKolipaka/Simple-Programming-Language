@@ -86,7 +86,7 @@ if_statement('if'(S,R))-->['if'], parent_start(S,R).
 parent_start(C,R)--> ['('], condition(C),[')'], \+then_block(R),false,!.
 parent_start(C,R)--> ['('], condition(C),[')'], then_block(R).
 %parent_end(R)-->then_block(R).
-then_block('then'(B,E))--> ['then'], block(B),else_block(E),!.
+then_block(('then'(B),E))--> ['then'], block(B),else_block(E),!.
 then_block('then'(B))--> ['then'], block(B).
 else_block('else'(B))-->['else'], block(B).
 block(S)--> ['{'],brace_end(S).
