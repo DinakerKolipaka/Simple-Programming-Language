@@ -5,6 +5,12 @@ Lexer Code
 :- use_module(library(pio)).
 :- use_module(library(dcg/basics)).
 
+execute_SPL(File) :- 	phrase_from_file(statement_list_L(Ls), File), 
+			convert_list(Ls, Fs), 
+			flatten(Fs, Token), 
+			program(T, Token, _), 
+			tokenWrite(Token),
+			eval_Program(T).
 
 eos([], []).
 
@@ -196,7 +202,7 @@ while_statement('while'(B,R))--> ['while'], ['('], condition(B), [')'], block(R)
 %parent_while_end(R)--> .
 
 
-tokenWrite :- program(T,['int',a,';',a,=,1,+,2,;,print,a,;,if,'(',a,==,1,')',then,'{',a,=,1,;,'}',else,'{',b,=,2,;,'}',;],_),
+tokenWrite(Token) :- program(T,Token,_),
               open('data/intermediate1.imc', write, Stream),
               write(Stream,T),nl(Stream),close(Stream).
 
