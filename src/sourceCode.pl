@@ -209,12 +209,8 @@ reduce_Statement(statement(T), Env, Env_New) :-     reduce_print(T, Env, Env_New
 
 
 
-/*assign operator*/
-reduce_declaration(declare(T, E), R, Env, Env_New) :- 	reduce_declaration(T,R,Env,Env_N), 
-	    										!,
-    											reduce_expression(E, R2, Env_N, Env_NN), 
-    											add_to_env(Env_NN, [R, R2], Env_New), !.
-                                                
+
+/*assign operator*/                                            
 reduce_assignment(assign(T, E), R, Env, Env_New) :-  eval_term(T, R, Env, Env), 
 						    \+ integer(R),
 						    reduce_expression(E, R2, Env, Env_NN),
@@ -224,18 +220,23 @@ reduce_assignment(assign(T, _), _, _, _) :- 	integer(T), write('Error: Value can
 
 
 
-/*Declare operator*/                                               
-reduce_declaration(declare(T), R, Env, Env_New) :- reduce_datatype(T, T1,D, Env), eval_term(T1, R, 0, _),\+ integer(R), add_to_env(Env, [R,D], Env_New), !.
+/*Declare with assignment operator*/  
+reduce_declaration(declare(T, E), R, Env, Env_New) :- 	eval_declaration(T,R,Env,Env_N), 
+	    										!,
+    											eval_terminal(E, R2, Env_N, Env_NN), 
+    											add_to_env(Env_NN, [R, R2], Env_New), !.
+reduce_declaration(declare(T), R, Env, Env_New) :- eval_declaration(T,R,Env,Env_New), !.
+reduce_declaration(declare(T), _, _,_) :- reduce_datatype(T, T1, _, _), integer(T1),  write('Error: Declaration cannot take integer value'), !.
+
+/*Declare without assignment operator*/                                               
+eval_declaration(T, R, Env, Env_New) :- reduce_datatype(T, T1,D, Env), eval_term(T1, R, 0, _),\+ integer(R), add_to_env(Env, [R,D], Env_New), !.
 
 /*Error handling-Declare operator*/ 
-reduce_declaration(declare(T), _, _,_) :- reduce_datatype(T, T1, _, _), integer(T1),  write('Error: Declaration cannot take integer value'), !.
+
 reduce_datatype(int(T),T, D,_):- D = 0.
 reduce_datatype(bool(T),T,D,_):- D= false.
 
-//default value is necessary to check if a var has been declared previous to assignment. When assigning, always check env if it is already present--DONE--TEST
 
-//throw error when declaration is done twice for the same variable.
-//check for type mismatch during assignment
 
 /* eval for only if-then condition */
 reduce_If_Statement(if(If, Then), Env, Env_New) :-    eval_Condition(If, Bool, Env, Env_N),
