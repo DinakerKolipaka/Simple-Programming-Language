@@ -105,86 +105,100 @@ token_codes([59, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75,
 
 
 /*********************************************************************/
-Parser Code
+%Parser Code
 /*********************************************************************/
 
-program(P)-->statement_list(P).
+keywords(X):-X=[if,then,else,while,true,false].
+program(program(P))-->statement_list(P),!.
 
-statement_list([S,L])-->statement(S),[';'],statement_list(L).
-statement_list(S)-->statement(S),[';'].
+statement_list('statement_List'(S,L))-->statement(S),[';'],statement_list(L),!.
+statement_list('statement_List'(S))-->statement(S),[';'],!.
 
-statement(S)-->assignment(S).
-statement(D)-->declaration(D).
-statement(P)-->print_statement(P).
-statement(I)-->if_statement(I).
-statement(W)-->while_statement(W).
+statement(statement(S))-->assignment(S).
+statement(statement(D))-->declaration(D).
+statement(statement(P))-->print_statement(P).
+statement(statement(I))-->if_statement(I).
+statement(statement(W))-->while_statement(W).
 
-print_statement('print'(E))-->['print'],expression(E).
+assignment(assign(L,R))-->identifier(L),['='],righthand(R),!.
+righthand(R)-->comparision(R).
+righthand(R)-->expression(R).
+righthand(R)-->boolean(R).
+
+declaration(declare(('int'(ID)),T))--> ['int'], identifier(ID),['='],term(T),!.
+declaration(declare(('bool'(ID)),T))--> ['bool'], identifier(ID),['='],term(T),!.
+declaration(declare('int'(ID)))--> ['int'], identifier(ID).
+declaration(declare('bool'(ID)))--> ['bool'], identifier(ID).
+
+
+boolean(true)-->[true].
+boolean(false)-->[false].
+
+comparision(compareEquals(E1,E2))-->expression(E1),['=='],expression(E2),!.
+comparision(compareGreaterEqual(E1,E2))-->expression(E1),['>='],expression(E2).
+comparision(compareLesserEqual(E1,E2))-->expression(E1), ['<='],expression(E2).
+comparision(compareGreater(E1,E2))-->expression(E1),['>'],expression(E2),!.
+comparision(compareLesser(E1,E2))-->expression(E1),['<'],expression(E2),!.
+comparision(compareNotEqual(E1,E2))-->expression(E1),['!='],expression(E2),!.
+
+expression(expression('add'(T,E)))-->term(T),['+'],expression(E),!.
+expression(expression('subtract'(T,E)))-->term(T),['-'],expression(E),!.
+expression(expression('divide'(T,E)))-->term(T),['/'],expression(E),!.
+expression(expression('multiply'(T,E)))-->term(T),['*'],expression(E),!.
+expression(expression('modulo'(T,E)))-->term(T),['%'],expression(E),!.
+expression(expression(T))-->term(T).
+
+
+term(term(T))-->boolean(T),!.
+
+term(term(T))-->identifier(T),!.
+term(term(T))-->terminal(T).
+terminal(et(N))-->number(N).
+
+
+%identifier('id'(S))-->[S], !,{\+iskey(S)},!.
+identifier('id'(S))-->[S],{iskey(S)}.
+
+
+iskey(K):-keywords(X),\+member(K,X).
+iskey(K):-keywords(X),member(K,X),write('Error'),false.
+%writeerror:-write('Error'),false.
+
+number('number'(N))-->[N],{isnumber(N)}.
+isnumber(N):-number(N).
+
+tonumber(X,Y):-term_to_atom(Y,X).
+condition('condition'(C))--> comparision(C).
+condition('condition'(B))--> boolean(B).
+condition('condition'(T))--> term(T).
+
+
+print_statement('print'(E))-->['print'],expression(E),!.
 print_statement('print'(C))-->['print'],comparision(C).
 print_statement('print'('nl'))-->['print'],['nl'].
 print_statement('print'(ID))-->['print'],identifier(ID).
 print_statement('print'(S))-->['print'],isString(S).
 isString(S)-->[S],{string(S)}.
 
-declaration('int'(ID))--> ['int'], identifier(ID).
-declaration('bool'(ID))--> ['bool'], identifier(ID).
 
-assignment('='(L,R))-->identifier(L),['='],righthand(R).
-assignment('='(ID,N))--> identifier(ID),['='],expression(N).
-assignment('='(ID,N))--> declaration(ID),['='],expression(N).
-righthand(R)-->boolean(R).
-righthand(R)-->comparision(R).
-
-boolean(true)-->[true].
-boolean(false)-->[false].
-
-comparision('=='(E1,E2))-->expression(E1),['=='],expression(E2).
-comparision('>='(E1,E2))-->expression(E1),['>='],expression(E2).
-comparision('<='(E1,E2))-->expression(E1),['<='],expression(E2).
-comparision('<'(E1,E2))-->expression(E1),['<'],expression(E2).
-comparision('>'(E1,E2))-->expression(E1),['>'],expression(E2).
-comparision('!='(E1,E2))-->expression(E1),['!='],expression(E2).
-
-expression('+'(T,E))-->term(T),['+'],expression(E),!.
-expression('-'(T,E))-->term(T),['-'],expression(E),!.
-expression('/'(T,E))-->term(T),['/'],expression(E),!.
-expression('*'(T,E))-->term(T),['*'],expression(E),!.
-expression('%'(T,E))-->term(T),['%'],expression(E),!.
-expression(T)-->term(T).
-
-term(T)-->identifier(T).
-term(T)-->terminal(T).
-terminal(N)-->number(N).
-%terminal((N,T))-->number(N),terminal(T).
-%terminal(N)-->number(N).
-
-identifier(S)-->[S].
-%identifier((L,I))-->letter(L),identifierterm(I).
-%identifier(L)-->letter(L).
-%identifierterm((L,I))-->letter(L),identifierterm(I).
-%identifierterm((N,I))-->number(N),identifierterm(I).
-%identifierterm(L)-->letter(L).
-%identifierterm(N)-->number(N).
-
-if_statement('if'(S,R))-->['if'], parent_start(S,R).
-parent_start(C,R)--> ['('], condition(C),[')'], then_block(R).
-parent_end(R)-->then_block(R).
-then_block('then'(B,E))--> ['then'], block(B),else_block(E),!.
+if_statement('if'(C,I,E))-->['if'], parent_start(C,I,E),!.
+if_statement('if'(C,I))-->['if'], parent_start(C,I).
+parent_start(C,I,E)--> ['('], condition(C),[')'], then_block(I),else_block(E),!.
+parent_start(C,I)--> ['('], condition(C),[')'], then_block(I),!.
 then_block('then'(B))--> ['then'], block(B).
 else_block('else'(B))-->['else'], block(B).
-
-while_statement('while'(B,R))--> ['while'], parent_while_start(B,R).
-parent_while_start(C,R)--> ['('], condition(C),[')'], block(R).
-%parent_while_end(R)--> [')'], block(R).
 block(S)--> ['{'],brace_end(S).
 brace_end(S)--> statement_list(S),['}'].
 
-condition(C)--> comparision(C).
-condition(B)--> boolean(B).
-condition(T)--> terminal(T).
 
-number(N)-->[N], {isnumber(N)}.
-isnumber(N):-number(N).
+while_statement('while'(B,R))--> ['while'], ['('], condition(B), [')'], block(R),!.
+%parent_while_start((C,R))--> parent_while_end(R).
+%parent_while_end(R)--> .
+
+
+tokenWrite :- program(T,['int',a,';',a,=,1,+,2,;,print,a,;,if,'(',a,==,1,')',then,'{',a,=,1,;,'}',else,'{',b,=,2,;,'}',;],_),
+              open('data/intermediate1.imc', write, Stream),
+              write(Stream,T),nl(Stream),close(Stream).
 
 
 /*********************************************************************/
