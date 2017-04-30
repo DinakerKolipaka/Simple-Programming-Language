@@ -2,43 +2,83 @@
 Lexer Code
 /*********************************************************************/
 
-%read from statements from file
+:- use_module(library(pio)).
+:- use_module(library(dcg/basics)).
+
+
 eos([], []).
 
-statement_list([])          	--> 	call(eos), !.
-statement_list([Line|Lines])	-->  	statement(Line), statement_list(Lines).
 
-statement([])     		--> 	( ";" ; call(eos) ; "\n" ; call(eos)  ), !.
-statement([L|Ls]) 		--> 	[L], statement(Ls).
+statement_list_L([])          	--> 	call(eos), !.
+statement_list_L([Line|Lines])	-->  	statement_L(Line), statement_list_L(Lines).
 
-%convert into tokens
+statement_L([])     		--> 	( "\n" ; call(eos)  ), !.
+statement_L([L|Ls]) 		--> 	[L], statement_L(Ls).
+
+/*convert into tokens*/
 convert_list([], []).
 convert_list([L|Ls], Fs) 	:- 	length(L, Len),
     					Len =:= 0,
 					convert_list(Ls, Fs).
 
+/* Parser doesn't need comments. line is checked for comment. */
 convert_list([L|Ls], Fs) :- 		check_comment(L),
 					convert_list(Ls, Fs).
 
+/* save all ascii codes to a list */
 convert_list([L|Ls], [F|Fs]) 	:- 	length(L, Len),
     					Len =\= 0,
     					convert_line(L, [], F ),
 					convert_list(Ls, Fs).
 
+/* convert ascii list to readable form */
 convert_line([], X, CL1)	:-	reverse(X, Y),
     					atom_codes(F, Y),
-    					CL1 = [F].
+    					atom_number(F, Num),
+    					CL1 = [Num].
     					
+/* convert '10' to 10 */
+convert_line([], X, CL1)	:-	reverse(X, Y),
+    					atom_codes(F, Y),
+    					\+ atom_number(F, _),
+    					CL1 = [F].
+  					
 
-convert_line([H|T], X, CL)	:- 	H =\= 32, 
+/* save ascii code for everything except space */
+convert_line([H|T], X, CL)	:- 	H =\= 32, H =\= 59,
 					token_codes(L), not_special(H, L),
 					convert_line(T, [H|X], CL).
 
+/* when space convert to readable word */
 convert_line([H|T], X, [CL1|CL]) :-	H =:= 32, 
     					reverse(X, Y), 
     					atom_codes(F, Y),
-    					CL1 = F, 
+    					atom_number(F, Num),
+    					CL1 = Num,
     					convert_line(T, [], CL).
+
+/* when not '10' convert to readable word */
+convert_line([H|T], X, [CL1|CL]) :-	H =:= 32, 
+    					reverse(X, Y), 
+    					atom_codes(F, Y),
+    					\+ atom_number(F, _),
+    					CL1 = F,
+    					convert_line(T, [], CL).
+
+
+convert_line([H|T], X, [CL1|CL]) :-	H =:= 59, 
+    					reverse(X, Y), 
+    					atom_codes(F, Y),
+    					atom_number(F, Num),
+    					CL1 = Num,
+    					convert_line(T, [59], CL).
+
+convert_line([H|T], X, [CL1|CL]) :-	H =:= 59, 
+    					reverse(X, Y), 
+    					atom_codes(F, Y),
+    					\+ atom_number(F, _),
+    					CL1 = F,
+    					convert_line(T, [59], CL).
 
 not_special(_, [])		:-	false.
 
@@ -50,15 +90,15 @@ not_special(X, [H|_]) 		:-	X =:= H,
 
 check_comment([H|_]) 		:- 	H =:= 35, true.
 
-token_codes([65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 
+/* token ascii codes */
+token_codes([59, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 
 	     76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86,
 	     87, 88, 89, 90, 97, 98, 99, 100, 101, 102,
 	     103, 104, 105, 106, 107, 108, 109, 110, 111,
 	     112, 113, 114, 115, 116, 117, 118, 119, 120,
 	     121, 122, 123, 124, 125, 48, 49, 50, 51, 52,
 	     53, 54, 55, 56, 57, 33, 37, 40, 41, 42, 43,
-	     45, 47, 60, 61, 62]).
-
+	     45, 47, 60, 61, 62, 48, 59, 9]).
 
 
 
