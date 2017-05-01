@@ -1,1 +1,14 @@
-int if = 10;
+int max = 10;
+while ( max < 13 )
+{
+print max;
+max = max + 1;
+};
+print max;
+
+
+# Output
+# 10
+# 11
+# 12
+# 13

@@ -1,14 +1,11 @@
-int max = 10;
-while ( max < 13 )
-{
-print max;
-max = max + 1;
-};
-print max;
+bool b;
+b = true;
+int num;
+num = 10;
+print b;
+print num;
 
 
-# Output
+# Output:
+# true
 # 10
-# 11
-# 12
-# 13

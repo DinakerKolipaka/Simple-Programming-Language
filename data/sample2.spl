@@ -7,5 +7,5 @@ print num / 10;
 };
 
 # OUTPUT:
-# 0.8
+# 1
 
