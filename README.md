@@ -14,7 +14,7 @@ Languages used: Prolog
      
 Directions on how to install and run the project (compiler + runtime):
 1. Download the Project and unzip it.
-2. Click on the install.bat file to start the Installation steps.
+2. Click on the install.bat file from the src folder to start the Installation steps.
 3. This will open the requisite Prolog compiler in your system such as SWI-Prolog or GProlog with the language file loaded.
 4. In the Prolog window enter the following predicate:
 execute_SPL('path_to_program_file').
