@@ -19,8 +19,26 @@ April 12th 2017 - Milestone 2: Document/Parser review and correction by Ramya an
 April 12th 2017 - Milestone 2: Document/Semantics Descripton by Vidhi, Ramya, Dinaker.
 April 12th 2017 - Milestone 2: Document/Final Edit by Manju Bisht
 April 12th 2017 - Milestone 2: Document/Final Review by Ramya, Dinaker and Vidhi Patel.
+April 16th 2017 - Milestone 3: Interpreter/Runtime reduction rules for programs, statement, statement-list, assignment, expression, if-statement by Manju.
+April 18th 2017 - Milestone 3: Interpreter/Runtime reduction rules review for programs, statement, statement-list, assignment, expression, if-statement by Vidhi.
 April 19th 2017 - Milestone 2: Document/Final Edit for resubmission by Ramya.
 April 19th 2017 - Milestone 2: Document/Final Edit review for resubmission by Manju, Dinaker, Vidhi.
+April 19th 2017 - Milestone 3: Interpreter/Runtime evaluation rules for programs, statement, statement-list, assignment, declaration, expression, if-statement by Ramya.
+April 20th 2017 - Milestone 3: Interpreter/Runtime evaluation rules for comparison by Ramya.
+April 20th 2017 - Milestone 3: Interpreter/Runtime reduction rules for while-statement, Print-Statement by Manju.
+April 22nd 2017 - Milestone 3: Interpreter/Runtime reduction rules for Condition, Comparison-Operator by Manju.
+April 23rd 2017 - Milestone 3: Interpreter/Runtime evaluation rules review by Dinaker.
+April 24th 2017 - Milestone 3: Interpreter/Runtime evaluation rules for while-statement, Print-Statement by Ramya.
+April 24th 2017 - Milestone 3: Interpreter/Runtime reduction rules for Operator, Term, Identifier by Manju.
+April 25th 2017 - Milestone 3: Interpreter/Runtime error handling for Condition, Comparison-Operator, Operator by Manju.
+April 25th 2017 - Milestone 3: Interpreter/Runtime error handling for programs, statement, statement-list, assignment, declaration by Ramya.
+April 25th 2017 - Milestone 3: Interpreter/Runtime error handling error handling for programs, statement, statement-list, assignment, declaration, comparison by Dinaker.
+April 26th 2017 - Milestone 3: Interpreter/Runtime error handling for Term, Identifier, Boolean by Manju.
+April 25th 2017 - Milestone 3: Interpreter/Runtime error handling review for Condition, Comparison-Operator, Operator by Vidhi.
+April 27th 2017 - Milestone 3: Interpreter/Runtime error handling for expression, if-statement, while-statement, Print-Statement by Ramya.
+ 
+
+# Parser log-To be edited
 April 19th 2017 - Milestone 2: Prolog/Parser specification for grammar rules by Vidhi, Dinaker
 April 20th 2017 - Milestone 2: Prolog/Parser specification for grammar rules by Vidhi, Dinaker.
 April 23rd 2017 - Milestone 2: Prolog/Parser changes for operator precedence by Vidhi, Dinaker.
@@ -29,10 +47,12 @@ April 29th 2017 - Milestone 3: Updated code for condensed parse tree, created ba
 April 25th 2017 - Milestone 3: Changed parenthesis for matching loops by Vidhi.
 
 
+
 Future plan
 
 1. Lexical Analyzer will be developed by - Manju and Ramya.
     1.a Read from file, conversion from ascii code.  - Manju.
+   
     1.b Token match predicate. - Manju
     1.b Review - Ramya.
     
@@ -55,18 +75,22 @@ Future plan
     5.b Reduce predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Manju.
     5.c Evaluate predicate - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Ramya.
     5.d Evaluate predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Ramya.
+   
     5.e Reduce predicate - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Vidhi.
     5.f Reduce predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Vidhi
+    
     5.g Evaluate predicate - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Dinaker.
     5.h Evaluate predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Dinaker.
+  
     5.i Error handling - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Ramya.
     5.j Error predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Manju.
-    5.i Error handling - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Dinaker.
-    5.j Error predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Vidhi.	
+ 
+    5.k Error handling - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Dinaker.
+    5.l Error predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Vidhi.	
 
     
 6. Creating Prolog application predicate - Manju.
 
-7. Command line execution - Vidhi.
+7. Command line execution - Vidhi, Ramya.
 
 8. Final documents, PPT, and video - Manju, Dinaker, Vidhi, and Ramya.
