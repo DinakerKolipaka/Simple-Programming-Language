@@ -1,0 +1,1 @@
+program(statement_List(statement(declare(bool(id(b)))),statement_List(statement(assign(id(b),expression(term(true)))),statement_List(statement(declare(int(id(num)))),statement_List(statement(assign(id(num),expression(term(id(10))))),statement_List(statement(print(expression(term(id(b))))),statement_List(statement(print(expression(term(id(num))))))))))))

@@ -1,0 +1,1 @@
+program(statement_List(statement(declare(bool(id(b)),term(true))),statement_List(statement(declare(int(id(num)),term(id(10)))),statement_List(statement(if(condition(term(id(b))),then(statement_List(statement(print(expression(divide(term(id(num)),expression(term(id(10)))))))))))))))
