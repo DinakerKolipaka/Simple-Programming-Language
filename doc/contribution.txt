@@ -32,10 +32,9 @@ April 25th 2017 - Milestone 3: Changed parenthesis for matching loops by Vidhi.
 Future plan
 
 1. Lexical Analyzer will be developed by - Manju and Ramya.
-    1.a Specification(grammar), read and write predicate - Manju.
-    1.b Token match predicates for all terminals - Ramya.
-    1.c Specification(grammar), read and write predicate review - Vidhi.
-    1.d Token match predicates for all terminals review - Dinaker.
+    1.a Read from file, conversion from ascii code.  - Manju.
+    1.b Token match predicate. - Manju
+    1.b Review - Ramya.
     
 2. Parser will be developed by - Vidhi and Dinaker.
     2.a Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Vidhi.
@@ -52,13 +51,22 @@ Future plan
     4.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter, Boolean - Manju.
     
 5. Interpreter will be developed by - Manju and Ramya, review by Manju and Dinaker.
-    5.a Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Ramya.
-    5.b Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter, Boolean - Manju.
-    5.c Read and write predicate, programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement review - Dinaker.
-    5.d Comment, Type, Block, Condition, Comparison-Operator, Operator, Term, Identifier, Identifier-Term, Number, Letter, Boolean - Vidhi.
+    5.a Reduce predicate - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Manju.
+    5.b Reduce predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Manju.
+    5.c Evaluate predicate - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Ramya.
+    5.d Evaluate predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Ramya.
+    5.e Reduce predicate - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Vidhi.
+    5.f Reduce predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Vidhi
+    5.g Evaluate predicate - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Dinaker.
+    5.h Evaluate predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Dinaker.
+    5.i Error handling - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Ramya.
+    5.j Error predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Manju.
+    5.i Error handling - programs, statement, statement-list, assignment, declaration, comparison, expression, if-statement, while-statement, Print-Statement - Dinaker.
+    5.j Error predicate Condition, Comparison-Operator, Operator, Term, Identifier, Boolean - Vidhi.	
 
-6. Creating Prolog application(exe) - Manju and Dinaker.
+    
+6. Creating Prolog application predicate - Manju.
 
-7. Command line execution - Vidhi and Ramya.
+7. Command line execution - Vidhi.
 
-8. Final documents and video - Manju, Dinaker, Vidhi, and Ramya.
+8. Final documents, PPT, and video - Manju, Dinaker, Vidhi, and Ramya.
