@@ -19,36 +19,44 @@ April 12th 2017 - Milestone 2: Document/Parser review and correction by Ramya an
 April 12th 2017 - Milestone 2: Document/Semantics Descripton by Vidhi, Ramya, Dinaker.
 April 12th 2017 - Milestone 2: Document/Final Edit by Manju Bisht
 April 12th 2017 - Milestone 2: Document/Final Review by Ramya, Dinaker and Vidhi Patel.
-April 16th 2017 - Milestone 3: Interpreter/Runtime reduction rules for programs, statement, statement-list, assignment, expression, if-statement by Manju.
-April 18th 2017 - Milestone 3: Interpreter/Runtime reduction rules review for programs, statement, statement-list, assignment, expression, if-statement by Vidhi.
+April 15th 2017 - Milestone 3: Directory Structured created by.  - Vidhi.
+April 18th 2017 - Milestone 3: Token match predicate. - Manju.
+April 18th 2017 - Milestone 3: Token match predicate review - Ramya.
 April 19th 2017 - Milestone 2: Document/Final Edit for resubmission by Ramya.
 April 19th 2017 - Milestone 2: Document/Final Edit review for resubmission by Manju, Dinaker, Vidhi.
 April 19th 2017 - Milestone 3: Interpreter/Runtime evaluation rules for programs, statement, statement-list, assignment, declaration, expression, if-statement by Ramya.
+April 19th 2017 - Milestone 3: Prolog/Parser specification for grammar rules by Vidhi, Dinaker
+April 19th 2017 - Milestone 3: Read from file, conversion from ascii code.  - Manju.
+April 20th 2017 - Milestone 3: Interpreter/Runtime reduction rules for programs, statement, statement-list, assignment, expression, if-statement by Manju.
+April 20th 2017 - Milestone 3: Interpreter/Runtime reduction rules review for programs, statement, statement-list, assignment, expression, if-statement by Vidhi.
 April 20th 2017 - Milestone 3: Interpreter/Runtime evaluation rules for comparison by Ramya.
+April 20th 2017 - Milestone 3: Prolog/Parser specification for grammar rules by Vidhi, Dinaker.
 April 20th 2017 - Milestone 3: Interpreter/Runtime reduction rules for while-statement, Print-Statement by Manju.
 April 22nd 2017 - Milestone 3: Interpreter/Runtime reduction rules for Condition, Comparison-Operator by Manju.
+April 23rd 2017 - Milestone 3: Prolog/Parser changes for operator precedence by Vidhi, Dinaker.
 April 23rd 2017 - Milestone 3: Interpreter/Runtime evaluation rules review by Dinaker.
 April 24th 2017 - Milestone 3: Interpreter/Runtime evaluation rules for while-statement, Print-Statement by Ramya.
 April 24th 2017 - Milestone 3: Interpreter/Runtime reduction rules for Operator, Term, Identifier by Manju.
 April 25th 2017 - Milestone 3: Interpreter/Runtime error handling for Condition, Comparison-Operator, Operator by Manju.
 April 25th 2017 - Milestone 3: Interpreter/Runtime error handling for programs, statement, statement-list, assignment, declaration by Ramya.
 April 25th 2017 - Milestone 3: Interpreter/Runtime error handling error handling for programs, statement, statement-list, assignment, declaration, comparison by Dinaker.
-April 26th 2017 - Milestone 3: Interpreter/Runtime error handling for Term, Identifier, Boolean by Manju.
-April 25th 2017 - Milestone 3: Interpreter/Runtime error handling review for Condition, Comparison-Operator, Operator by Vidhi.
-April 27th 2017 - Milestone 3: Interpreter/Runtime error handling for expression, if-statement, while-statement, Print-Statement by Ramya.
- 
-
-# Parser log-To be edited
-April 19th 2017 - Milestone 2: Prolog/Parser specification for grammar rules by Vidhi, Dinaker
-April 20th 2017 - Milestone 2: Prolog/Parser specification for grammar rules by Vidhi, Dinaker.
-April 23rd 2017 - Milestone 2: Prolog/Parser changes for operator precedence by Vidhi, Dinaker.
-April 30th 2017 - Milestone 3: Changed if-then-else loop in parser, made the presentation by Vidhi.
-April 29th 2017 - Milestone 3: Updated code for condensed parse tree, created bash file for execution by Vidhi
 April 25th 2017 - Milestone 3: Changed parenthesis for matching loops by Vidhi.
+April 25th 2017 - Milestone 3: Interpreter/Runtime error handling review for Condition, Comparison-Operator, Operator by Vidhi.
+April 26th 2017 - Milestone 3: Interpreter/Runtime error handling for Term, Identifier, Boolean by Manju.
+April 27th 2017 - Milestone 3: Interpreter/Runtime error handling for expression, if-statement, while-statement, Print-Statement by Ramya.
+April 29th 2017 - Milestone 3: Updated code for condensed parse tree, created bash file for execution by Vidhi
+April 29th 2017 - Milestone 3: Big fixes - declaration, boolean by Ramya.
+April 29th 2017 - Milestone 3: Bug fixes assignment, type mis-match, while-loop by Manju.
+April 30th 2017 - Milestone 3: Changed if-then-else loop in parser, presentation preparation by Vidhi.
+April 30th 2017 - Milestone 3: Command line execution, bash script by Vidhi.
+April 30th 2017 - Milestone 3: Directory Structured recreated by Ramya.
+April 30th 2017 - Milestone 3: Read.md by Ramya.
+April 30th 2017 - Milestone 3: PPT by Vidhi, Ramya, Dinaker, Manju.
 
 
 
-Future plan
+
+Future plan - Completed
 
 1. Lexical Analyzer will be developed by - Manju and Ramya.
     1.a Read from file, conversion from ascii code.  - Manju.
