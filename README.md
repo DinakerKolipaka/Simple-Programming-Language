@@ -6,7 +6,9 @@ Team Members: Dinaker Prakash Kolipaka
               Ramya Varakantham
               Vidhi Patel
               
-System on which compiler and runtime are built: Windows
+System on which compiler and runtime are built: 
+OS on which our language would work on: Windows
+OS on which our language would not work on: MacOS
 
 Tools used: SWI Prolog
 
