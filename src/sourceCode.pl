@@ -229,10 +229,6 @@ tokenWrite(Token) :- program(T,Token,_),
 /*********************************************************************/
 %Interpreter Code
 /*********************************************************************/
-/* Currently all operations, assignment, if-then-else statements are working */
-
-/* high-level predicate to call the interpreter program. */
-
 
 %Interpreter/Runtime Code
 %Author: Ramya Varakantham, Manju Bisht

@@ -1,12 +1,12 @@
 
-# Lexical Analysis Code
-# Author: Manju Bisht
-# Version: 2.2
-# Date: 4/29/2017
+%Lexical Analysis Code
+%Author: Manju Bisht
+%Version: 2.2
+%Date: 4/29/2017
 
-# Library for read/write a file
+%Library for read/write a file
 - use_module(library(pio)).
-# library for dcg grammar
+%library for dcg grammar
 - use_module(library(dcgbasics)).
 
 
@@ -18,41 +18,41 @@ statement_list_L([Line|Lines])	-->  	statement_L(Line), statement_list_L(Lines).
 statement_L([])     		--> 	( "\n" ; call(eos)  ), !.
 statement_L([L|Ls]) 		--> 	[L], statement_L(Ls).
 
-# convert into tokens
+%convert into tokens
 convert_list([], []).
 convert_list([L|Ls], Fs) 	:- 	length(L, Len),
     					Len =:= 0,
 					convert_list(Ls, Fs).
 
-# Parser doesnt need comments. line is checked for comment. 
+%Parser doesnt need comments. line is checked for comment. 
 convert_list([L|Ls], Fs) :- 		check_comment(L),
 					convert_list(Ls, Fs).
 
-# save all ascii codes to a list 
+%save all ascii codes to a list 
 convert_list([L|Ls], [F|Fs]) 	:- 	length(L, Len),
     					Len =\= 0,
     					convert_line(L, [], F ),
 					convert_list(Ls, Fs).
 
-# convert ascii list to readable form 
+%convert ascii list to readable form 
 convert_line([], X, CL1)	:-	reverse(X, Y),
     					atom_codes(F, Y),
     					atom_number(F, Num),
     					CL1 = [Num].
     					
-# convert '10' to 10 
+%convert '10' to 10 
 convert_line([], X, CL1)	:-	reverse(X, Y),
     					atom_codes(F, Y),
     					\+ atom_number(F, _),
     					CL1 = [F].
   					
 
-# save ascii code for everything except space 
+%save ascii code for everything except space 
 convert_line([H|T], X, CL)	:- 	H =\= 32, H =\= 59,
 					token_codes(L), not_special(H, L),
 					convert_line(T, [H|X], CL).
 
-# when space convert to readable word 
+%when space convert to readable word 
 convert_line([H|T], X, [CL1|CL]) :-	H =:= 32, 
     					reverse(X, Y), 
     					atom_codes(F, Y),
@@ -60,7 +60,7 @@ convert_line([H|T], X, [CL1|CL]) :-	H =:= 32,
     					CL1 = Num,
     					convert_line(T, [], CL).
 
-# when not '10' convert to readable word 
+%when not '10' convert to readable word 
 convert_line([H|T], X, [CL1|CL]) :-	H =:= 32, 
     					reverse(X, Y), 
     					atom_codes(F, Y),
@@ -93,7 +93,7 @@ not_special(X, [H|_]) 		:-	X =:= H,
 
 check_comment([H|_]) 		:- 	H =:= 35, true.
 
-# token ascii codes 
+%token ascii codes 
 token_codes([59, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 
 	     76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86,
 	     87, 88, 89, 90, 97, 98, 99, 100, 101, 102,
@@ -106,10 +106,10 @@ token_codes([59, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75,
 
 
 
-# Parser Code
-# Author: Vidhi Patel, Dinaker Prakash Kolipaka
-# Version: 7.2
-# Date: 4/30/2017
+%Parser Code
+%Author: Vidhi Patel, Dinaker Prakash Kolipaka
+%Version: 7.2
+%Date: 4/30/2017
 
 
 keywords(X):-X=[if,then,else,while,true,false].
@@ -165,7 +165,7 @@ identifier('id'(S))-->[S],{iskey(S)}.
 
 
 iskey(K):-keywords(X),\+member(K,X).
-iskey(K):-keywords(X),member(K,X),write('Error'),false.
+iskey(K):-keywords(X),member(K,X),false.
 %writeerror:-write('Error'),false.
 
 number('number'(N))-->[N],{isnumber(N)}.
@@ -201,5 +201,5 @@ while_statement('while'(B,R))--> ['while'], ['('], condition(B), [')'], block(R)
 
 
 tokenWrite(Token) :- program(T,Token,_),
-              open('data/intermediate1.imc', write, Stream),
+              open('../data/intermediate1.imc', write, Stream),
               write(Stream,T),nl(Stream),close(Stream).
