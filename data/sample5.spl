@@ -1,3 +1,13 @@
+bool b = true;
+bool bb = b;
 int num = 10;
-int divisor;
-num = num / divisor;
+print num;
+if ( bb )
+then
+{
+print num * 20;
+};
+
+# OUTPUT:
+# 10
+# 200

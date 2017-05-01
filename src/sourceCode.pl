@@ -1,5 +1,5 @@
 /*********************************************************************/
-Lexer Code
+%Lexer Code
 /*********************************************************************/
 
 :- use_module(library(pio)).
@@ -174,7 +174,7 @@ identifier('id'(S))-->[S],{iskey(S)}.
 
 
 iskey(K):-keywords(X),\+member(K,X).
-iskey(K):-keywords(X),member(K,X),write('Error'),false.
+iskey(K):-keywords(X),member(K,X),false.
 %writeerror:-write('Error'),false.
 
 number('number'(N))-->[N],{isnumber(N)}.
@@ -210,12 +210,12 @@ while_statement('while'(B,R))--> ['while'], ['('], condition(B), [')'], block(R)
 
 
 tokenWrite(Token) :- program(T,Token,_),
-              open('data/intermediate1.imc', write, Stream),
+              open('../data/intermediate1.imc', write, Stream),
               write(Stream,T),nl(Stream),close(Stream).
 
 
 /*********************************************************************/
-Interpreter Code
+%Interpreter Code
 /*********************************************************************/
 /* Currently all operations, assignment, if-then-else statements are working */
 
