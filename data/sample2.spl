@@ -1,5 +1,11 @@
-int num;
-while ( num < 10 )
+bool b = true;
+int num = 10;
+if ( b )
+then
 {
-print n;
+print num / 10;
 };
+
+# OUTPUT:
+# 0.8
+
